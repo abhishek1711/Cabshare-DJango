@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block head %}
+<title>Delete</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <form action="" form method="post">
+    {% csrf_token %}
+    <p>Are you sure you want to delete</p>
+    <input type="submit" value="delete" />
+    </form>
+    <br>
+    </div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+  <!-- <h1>Home</h1>
+  {% block head %}
+  <title>Home</title>
+  {% endblock %} -->
+
+
+  {% block body %}
+  <div class="container">
+    <h1>Where U want to go!!</h1>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Submit</button>
+    </form>
+    <h2>{{ text }}</h2>
+    {% for post in posts %}
+      <h1>{{ post.post }}</h1>
+      <!-- <p></p> -->
+      <p1>{{ user }}</p1>
+    {% endfor %}
+  </div>
+  {% endblock %}

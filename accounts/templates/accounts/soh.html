@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+  <!-- <h1>Home</h1>
+  {% block head %}
+  <title>Home</title>
+  {% endblock %} -->
+
+
+  {% block body %}
+
+  <div class="container">
+
+    <table class="table">
+           <tr>
+               <th>User</th>
+               <th>Route</th>
+               <th>Date</th>
+               <th>Time</th>
+               <th>Phone No.</th>
+               <th>Delete</th>
+
+               <!-- <th class="col-md-1"></th>
+               <th class="col-md-1"></th>
+               <th class="col-md-1"></th>
+               <th>Away</th> -->
+           </tr>
+
+
+    {% for posti in  curuser %}
+    <tr>
+
+      <td>{{ posti.fir }}</td>
+      <td>{{ posti.route }}</td>
+      <td>{{ posti.date}}</td>
+      <td>{{ posti.time }}</td>
+      <td>{{ posti.phone_no }}</td>
+      <td>
+        <a href="{% url 'accounts:delete' posti.id %}">delete</a>
+      </td>
+    </tr>
+
+    {% endfor %}
+
+    </table>
+    <br></br>
+
+    {% for post in  notcuruser %}
+
+
+      <p>person: {{ post.fir }}TO {{ post.route }} on  {{ post.date}} at {{ post.time }},phone no {{ post.phone_no }} created on {{ post.created }}</p>
+
+    {% endfor %}
+
+    {% for cur in curuser %}
+
+    <table class="table">
+        <caption>  {{cur.route}} </caption>
+           <tr>
+               <th>User</th>
+               <th>Route</th>
+               <th>Date</th>
+               <th>Time</th>
+               <th>Phone No.</th>
+               <!-- <th class="col-md-1"></th>
+               <th class="col-md-1"></th>
+               <th class="col-md-1"></th>
+               <th>Away</th> -->
+           </tr>
+           <script>
+             var a=1
+            </script>
+      {% for notcur in notcuruser %}
+        {% if  cur.route == notcur.route and cur.date == notcur.date  %}
+        <script>
+          var a=0
+         </script>
+        <tr>
+
+          <td>{{ notcur.fir }}</td>
+          <td>{{ notcur.route }}</td>
+          <td>{{ notcur.date}}</td>
+          <td>{{ notcur.time }}</td>
+          <td>{{ notcur.phone_no }}</td>
+        </tr>
+            <!-- <p>TO {{ notcur.route }} on  {{ notcur.date}} at {{ notcur.time }},phone no {{ notcur.phone_no }} created on {{ notcur.created }}</p> -->
+        {% endif %}
+      {% endfor %}
+        </table>
+        {% if a == 1 %}
+        <p>No data found.</p>
+        {% endif %}
+    {% endfor %}
+
+  </div>
+
+  {% endblock %}

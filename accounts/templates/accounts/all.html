@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+  <!-- <h1>Home</h1>
+  {% block head %}
+  <title>Home</title>
+  {% endblock %} -->
+
+
+  {% block body %}
+  <div class="container">
+
+    {% for post in posts %}
+
+      <p>TO {{ post.route }} on  {{ post.date}} at {{ post.time }},phone no {{ post.phone_no }} created on {{ post.created }}</p>
+
+    {% endfor %}
+  </div>
+  {% endblock %}
